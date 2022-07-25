@@ -18,9 +18,7 @@ import java.util.Objects;
 @Mixin(PixelmonWrapper.class)
 public abstract class MixinPixelmonWrapper {
 
-    // Mixin plugin fails to recognize attached sources and assumes incorrect mapping
-    @SuppressWarnings({"MixinAnnotationTarget", "UnresolvedMixinReference", "InvalidInjectorMethodSignature"})
-    @Redirect(method = "useItem", remap = false, at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/InventoryPlayer;clearMatchingItems(Lnet/minecraft/item/Item;IILnet/minecraft/nbt/NBTTagCompound;)I"), require = 1)
+    @Redirect(method = "useItem", remap = false, at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/InventoryPlayer;func_174925_a(Lnet/minecraft/item/Item;IILnet/minecraft/nbt/NBTTagCompound;)I"), require = 1)
     private int clearMatchingItemsProxy(InventoryPlayer inventory, @Nullable Item itemIn, int metadataIn,
                                         int removeCount, @Nullable NBTTagCompound itemNBT) {
         int originalRemoveCount = removeCount;

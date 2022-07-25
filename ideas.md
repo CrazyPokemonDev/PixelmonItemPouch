@@ -25,6 +25,21 @@ Maybe add a trainer pass feature to show/store collected badges?
 
 ### Automatic pickup of items
 
+### Configurations
+
+- Configure visibility of All Items category (client side)
+
 ## Visuals
 
 - 3D pouch model (help wanted)
+
+## Fixes
+
+### Tooltips in item pouch GUI
+
+- Berries and similar in pouch
+- Any item in inventory
+
+### Mixins
+
+Get mixins to work in both dev and exported environment (maybe hard-replace method references in mixin annotations with mcp mapping in dev environment)

@@ -29,7 +29,7 @@ public abstract class MixinChooseBag extends BattleScreen {
         super(parent, mode);
     }
 
-    @Inject(method = "getInventory", at = @At("HEAD"), remap = false)
+    @Inject(method = "getInventory", at = @At("HEAD"), remap = false, require = 1)
     private void onGetInventory(CallbackInfo ci) {
         for (ItemStack stack : this.mc.player.inventory.mainInventory) {
             if (stack.hasCapability(Capabilities.ITEM_POUCH, null)) {

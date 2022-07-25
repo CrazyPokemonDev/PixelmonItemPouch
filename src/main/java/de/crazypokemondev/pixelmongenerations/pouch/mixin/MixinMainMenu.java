@@ -33,9 +33,9 @@ public abstract class MixinMainMenu extends BattleScreen {
         super(parent, mode);
     }
 
-    @SuppressWarnings({"rawtypes", "InvalidInjectorMethodSignature", "UnresolvedMixinReference", "MixinAnnotationTarget"})
-    @Inject(method = "drawScreen", remap = false, at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;getItem()Lnet/minecraft/item/Item;"),
-            locals = LocalCapture.CAPTURE_FAILSOFT)
+    @SuppressWarnings("rawtypes")
+    @Inject(method = "drawScreen", remap = false, at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;func_77973_b()Lnet/minecraft/item/Item;"),
+            locals = LocalCapture.CAPTURE_FAILSOFT, require = 1)
     private void onDrawScreen(int width, int height, int mouseX, int mouseY, CallbackInfo ci, PixelmonData data, int guiHeight, int guiWidth, Item item, int bX, int bY, int bWidth, int bHeight, Iterator var13, ItemStack i) {
         if (i.hasCapability(Capabilities.ITEM_POUCH, null)) {
             IPouchItemHandler pouch = Objects.requireNonNull(i.getCapability(Capabilities.ITEM_POUCH, null));
@@ -53,9 +53,9 @@ public abstract class MixinMainMenu extends BattleScreen {
         }
     }
 
-    @SuppressWarnings({"UnresolvedMixinReference", "InvalidInjectorMethodSignature", "MixinAnnotationTarget", "rawtypes"})
-    @Inject(method = "click", remap = false, at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;getItem()Lnet/minecraft/item/Item;"),
-            locals = LocalCapture.CAPTURE_FAILSOFT)
+    @SuppressWarnings("rawtypes")
+    @Inject(method = "click", remap = false, at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;func_77973_b()Lnet/minecraft/item/Item;"),
+            locals = LocalCapture.CAPTURE_FAILSOFT, require = 1)
     private void onClick(int width, int height, int mouseX, int mouseY, CallbackInfo ci, int guiHeight, int guiWidth, int bX, int bY, int bWidth, int bHeight, Iterator var11, ItemStack i) {
         if (i.hasCapability(Capabilities.ITEM_POUCH, null)) {
             IPouchItemHandler pouch = Objects.requireNonNull(i.getCapability(Capabilities.ITEM_POUCH, null));
@@ -72,12 +72,12 @@ public abstract class MixinMainMenu extends BattleScreen {
     }
 
     @SuppressWarnings("rawtypes")
-    @Redirect(method = "click", remap = false, at = @At(value = "INVOKE", target = "Ljava/util/Iterator;hasNext()Z", remap = false))
+    @Redirect(method = "click", remap = false, at = @At(value = "INVOKE", target = "Ljava/util/Iterator;hasNext()Z", remap = false), require = 1)
     private boolean onHasNext(Iterator iterator) {
         return !this.alreadySentPacket && iterator.hasNext();
     }
 
-    @Inject(method = "click", remap = false, at = @At("RETURN"))
+    @Inject(method = "click", remap = false, at = @At("RETURN"), require = 1)
     private void onClickReturn(int width, int height, int mouseX, int mouseY, CallbackInfo ci) {
         this.alreadySentPacket = false;
     }

@@ -18,8 +18,9 @@ import java.util.Objects;
 @Mixin(UseItem.Handler.class)
 public abstract class MixinUseItem {
     // Mixin plugin fails to recognize attached sources and assumes incorrect mapping
-    @SuppressWarnings({"MixinAnnotationTarget", "UnresolvedMixinReference", "InvalidInjectorMethodSignature"})
-    @Redirect(method = "onMessage(Lcom/pixelmongenerations/core/network/packetHandlers/battles/UseItem;Lnet/minecraftforge/fml/common/network/simpleimpl/MessageContext;)Lnet/minecraftforge/fml/common/network/simpleimpl/IMessage;", remap = false, at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/InventoryPlayer;clearMatchingItems(Lnet/minecraft/item/Item;IILnet/minecraft/nbt/NBTTagCompound;)I"), require = 1)
+    @Redirect(method = "onMessage(Lcom/pixelmongenerations/core/network/packetHandlers/battles/UseItem;Lnet/minecraftforge/fml/common/network/simpleimpl/MessageContext;)Lnet/minecraftforge/fml/common/network/simpleimpl/IMessage;",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/InventoryPlayer;func_174925_a(Lnet/minecraft/item/Item;IILnet/minecraft/nbt/NBTTagCompound;)I"),
+            require = 1, remap = false)
     private int clearMatchingItemsProxy(InventoryPlayer inventory, @Nullable Item itemIn, int metadataIn,
                                         int removeCount, @Nullable NBTTagCompound itemNBT) {
         int originalRemoveCount = removeCount;

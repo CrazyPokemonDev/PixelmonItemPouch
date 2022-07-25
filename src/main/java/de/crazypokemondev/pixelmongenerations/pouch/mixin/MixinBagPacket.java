@@ -19,11 +19,9 @@ public abstract class MixinBagPacket {
     @Shadow(remap = false)
     int itemIndex;
 
-    // Mixin plugin fails to recognize attached sources and assumes incorrect mapping
-    @SuppressWarnings({"MixinAnnotationTarget", "UnresolvedMixinReference", "InvalidInjectorMethodSignature"})
     @ModifyVariable(method = "bagPacket", at = @At(value = "FIELD", args = "log=true",
-            target = "Lnet/minecraft/entity/player/EntityPlayer;inventory:Lnet/minecraft/entity/player/InventoryPlayer;",
-            ordinal = 0, opcode = Opcodes.GETFIELD), remap = false, name = "usedStack")
+            target = "Lnet/minecraft/entity/player/EntityPlayer;field_71071_by:Lnet/minecraft/entity/player/InventoryPlayer;",
+            ordinal = 0, opcode = Opcodes.GETFIELD), remap = false, name = "usedStack", require = 1)
     private ItemStack onBagPacket(ItemStack usedStack, EntityPlayer player) {
         for (ItemStack stack : player.inventory.mainInventory) {
             if (stack.hasCapability(Capabilities.ITEM_POUCH, null)) {
@@ -39,11 +37,9 @@ public abstract class MixinBagPacket {
         return null;
     }
 
-    // Mixin plugin fails to recognize attached sources and assumes incorrect mapping
-    @SuppressWarnings({"MixinAnnotationTarget", "UnresolvedMixinReference", "InvalidInjectorMethodSignature"})
     @ModifyVariable(method = "bagPacketFromPokemon", at = @At(value = "FIELD", args = "log=true",
-            target = "Lnet/minecraft/entity/player/EntityPlayer;inventory:Lnet/minecraft/entity/player/InventoryPlayer;",
-            ordinal = 0, opcode = Opcodes.GETFIELD), remap = false, name = "usedStack")
+            target = "Lnet/minecraft/entity/player/EntityPlayer;field_71071_by:Lnet/minecraft/entity/player/InventoryPlayer;",
+            ordinal = 0, opcode = Opcodes.GETFIELD), remap = false, name = "usedStack", require = 1)
     private ItemStack onBagPacketFromPokemon(ItemStack usedStack, EntityPlayer player) {
         for (ItemStack stack : player.inventory.mainInventory) {
             if (stack.hasCapability(Capabilities.ITEM_POUCH, null)) {
