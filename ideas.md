@@ -40,7 +40,3 @@ Maybe add a trainer pass feature to show/store collected badges?
 
 - Berries and similar in pouch
 - Any item in inventory
-
-### Mixins
-
-Get mixins to work in both dev and exported environment (maybe hard-replace method references in mixin annotations with mcp mapping in dev environment)
