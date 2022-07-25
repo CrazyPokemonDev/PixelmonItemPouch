@@ -60,10 +60,13 @@ public class ItemPouchContainer extends Container {
         super.onContainerClosed(playerIn);
 
         if (playerIn instanceof EntityPlayerMP) {
+            ItemStack stack = playerIn.getHeldItem(EnumHand.MAIN_HAND);
+            if (pouch instanceof ItemStackHandler) {
+                stack.setTagCompound(((ItemStackHandler) pouch).serializeNBT());
+            }
             ((EntityPlayerMP) playerIn).connection.sendPacket(
                     // this assumes the player is holding the pouch in their main hand
-                    new SPacketEntityEquipment(playerIn.getEntityId(), EntityEquipmentSlot.MAINHAND,
-                            playerIn.getHeldItem(EnumHand.MAIN_HAND)));
+                    new SPacketEntityEquipment(playerIn.getEntityId(), EntityEquipmentSlot.MAINHAND, stack));
         }
     }
 
