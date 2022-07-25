@@ -7,6 +7,7 @@
 - ExpAll
 - Zygarde Cube
 - Meltan Box
+- Exp. charm
 
 ### New categories
 

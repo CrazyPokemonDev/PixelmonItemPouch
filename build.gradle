@@ -131,4 +131,45 @@ tasks.create("copyResourceToClasses", Copy.class) {
     from(tasks.processResources.destinationDir)
 }
 
+task genDevSources(type: Copy) {
+    tasks.compileJava.dependsOn(it)
+    onlyIf { gradle.taskGraph.hasTask(tasks.prepareRuns) }
+
+    outputs.upToDateWhen { false }
+
+    from "$rootDir/src/main/java/de/crazypokemondev/pixelmongenerations/pouch/mixin"
+    into "$buildDir/generated-src/de/crazypokemondev/pixelmongenerations/pouch/mixin"
+    filter {
+        line -> line
+                .replaceAll('field_71071_by', 'inventory')
+                .replaceAll('func_77973_b', 'getItem')
+                .replaceAll('func_174925_a', 'clearMatchingItems')
+    }
+}
+
+task genProdSources(type: Copy) {
+    tasks.compileJava.dependsOn(it)
+    onlyIf { !gradle.taskGraph.hasTask(tasks.prepareRuns) }
+
+    outputs.upToDateWhen { false }
+
+    from "$rootDir/src/main/java/de/crazypokemondev/pixelmongenerations/pouch/mixin"
+    into "$buildDir/generated-src/de/crazypokemondev/pixelmongenerations/pouch/mixin"
+}
+
+compileJava.doLast {
+    delete "$buildDir/generated-src"
+}
+
+sourceSets {
+    main {
+        java {
+            exclude "de/crazypokemondev/pixelmongenerations/pouch/mixin"
+        }
+        java{
+            srcDir "$buildDir/generated-src/de/crazypokemondev/pixelmongenerations/pouch/mixin"
+        }
+    }
+}
+
 jar.finalizedBy('reobfJar')
