@@ -23,7 +23,7 @@ import java.nio.file.Paths;
 @Mod(modid = PixelmonItemPouchMod.MOD_ID, version = PixelmonItemPouchMod.VERSION, name = PixelmonItemPouchMod.NAME)
 public class PixelmonItemPouchMod {
     public static final String MOD_ID = "pixelmonitempouch";
-    public static final String VERSION = "0.1.0";
+    public static final String VERSION = "0.1.1";
     public static final String NAME = "PixelmonItemPouch";
     public static Logger logger;
     @SidedProxy(clientSide = "de.crazypokemondev.pixelmongenerations.pouch.proxy.ClientProxy",
