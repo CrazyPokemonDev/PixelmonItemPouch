@@ -1,0 +1,25 @@
+{
+  "rewards": {
+    "recipes": [
+      "pixelmonitempouch:item_pouch"
+    ]
+  },
+  "criteria": {
+    "has_base_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "pixelmon:poke_ball",
+            "data": 0
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_base_item"
+    ]
+  ]
+}

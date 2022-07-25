@@ -1,0 +1,15 @@
+{
+  "compatibilityLevel": "JAVA_8",
+  "package": "de.crazypokemondev.pixelmongenerations.pouch.mixin",
+  "refmap": "refmap.pixelmonitempouch.json",
+  "mixins": [
+    "MixinBagPacket",
+    "MixinPixelmonWrapper",
+    "MixinUseItem"
+  ],
+  "client": [
+    "MixinChooseBag",
+    "MixinMainMenu"
+  ],
+  "server": []
+}

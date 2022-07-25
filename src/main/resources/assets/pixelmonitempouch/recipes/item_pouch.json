@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "lll",
+    "lpl",
+    "lll"
+  ],
+  "key":
+  {
+    "l":
+    {
+      "item": "minecraft:leather",
+      "data": 0
+    },
+    "p":
+    {
+      "item": "pixelmon:poke_ball",
+      "data": 0
+    }
+  },
+  "result":
+  {
+    "item": "pixelmonitempouch:item_pouch",
+    "count": 1,
+    "data": 0
+  }
+}

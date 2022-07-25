@@ -1,0 +1,15 @@
+gui.pixelmonitempouch.amount= x%s
+gui.pixelmonitempouch.category.none=All items
+gui.pixelmonitempouch.category.medicine=Medicine
+gui.pixelmonitempouch.category.poke_balls=Pokéballs
+gui.pixelmonitempouch.category.battle_items=Battle Items
+gui.pixelmonitempouch.category.berries=Berries
+gui.pixelmonitempouch.category.apricorns=Apricorns
+gui.pixelmonitempouch.category.other_items=Items
+gui.pixelmonitempouch.category.tms=TMs & TRs
+gui.pixelmonitempouch.category.treasures=Treasures
+gui.pixelmonitempouch.category.ingredients=Curry Ingredients
+gui.pixelmonitempouch.category.z_crystals=Z-Crystals
+gui.pixelmonitempouch.category.key_items=Key Items
+
+item.pixelmonitempouch.item_pouch.name=Item Pouch
