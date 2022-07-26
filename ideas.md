@@ -42,8 +42,6 @@ Maybe add a trainer pass feature to show/store collected badges?
 
 ## Fixes
 
-### Send pouch update on useItem too
-
 ### Tooltips in item pouch GUI
 
 - Berries and similar in pouch
