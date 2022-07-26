@@ -4,8 +4,7 @@
   "refmap": "refmap.pixelmonitempouch.json",
   "mixins": [
     "MixinBagPacket",
-    "MixinPixelmonWrapper",
-    "MixinUseItem"
+    "MixinPixelmonWrapper"
   ],
   "client": [
     "MixinChooseBag",
