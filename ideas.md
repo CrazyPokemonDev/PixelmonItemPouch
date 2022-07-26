@@ -35,14 +35,10 @@ Maybe add a trainer pass feature to show/store collected badges?
 
 - Configure visibility of All Items category (client side)
 - Configure binding contents to player instead of item
+- Configure tooltip visibility (client side)
 
 ## Visuals
 
 - 3D pouch model (help wanted)
 
 ## Fixes
-
-### Tooltips in item pouch GUI
-
-- Berries and similar in pouch
-- Any item in inventory

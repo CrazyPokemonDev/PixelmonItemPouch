@@ -37,13 +37,6 @@ public interface IPouchItemHandler extends IItemHandlerModifiable {
     ItemStack addItem(ItemStack stack);
 
     /**
-     * Returns the number of slots currently in this item handler, not counting all stacks not of the given category
-     * at the end.
-     * @param category The category to use for filtering
-     */
-    int getSlotsOfCategoryTrimEnd(@NotNull Category category);
-
-    /**
      * Returns the index of the first empty slot
      * @return The index of the first empty slot, or Optional.empty()
      */

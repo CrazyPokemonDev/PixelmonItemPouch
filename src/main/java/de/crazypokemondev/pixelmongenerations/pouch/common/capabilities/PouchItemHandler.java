@@ -9,7 +9,6 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
@@ -78,15 +77,6 @@ public class PouchItemHandler extends ItemStackHandler implements IPouchItemHand
             }
         }
         return Optional.of(n + slotsSkipped);
-    }
-
-    @Override
-    public int getSlotsOfCategoryTrimEnd(@NotNull Category category) {
-        int slots = 0;
-        for (int i = 0; i < stacks.size(); i++) {
-            if (category.containsItem(stacks.get(i).getItem())) slots = i;
-        }
-        return slots;
     }
 
     @Override

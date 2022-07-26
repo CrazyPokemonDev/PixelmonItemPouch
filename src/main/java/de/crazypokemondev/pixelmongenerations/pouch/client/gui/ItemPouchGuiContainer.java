@@ -70,6 +70,7 @@ public class ItemPouchGuiContainer extends GuiContainer {
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         super.drawScreen(mouseX, mouseY, partialTicks);
         if (selectedCategory != null) {
+            ItemStack toolTipStack = null;
             for (int row = 0; row < NUM_ROWS; row++) {
                 int slotIndex = pouch.getSlotIndexForCategory(pouchSlotOffset + row, selectedCategory).orElse(Integer.MAX_VALUE);
                 if (slotIndex < pouch.getSlots()) {
@@ -82,8 +83,13 @@ public class ItemPouchGuiContainer extends GuiContainer {
                     drawString(this.fontRenderer, stack.getDisplayName()
                                     + I18n.format("gui.pixelmonitempouch.amount", stack.getCount()),
                             textX, textY, 0xffffff);
+                    if (mouseX >= x && mouseX < x + ITEM_POUCH_AREA_WIDTH && mouseY >= y && mouseY < y + 18) {
+                        toolTipStack = stack;
+                    }
                 } else break;
             }
+            if (toolTipStack != null) renderToolTip(toolTipStack, mouseX, mouseY);
+            else renderHoveredToolTip(mouseX, mouseY);
         }
         else {
             for (int row = 0; row < NUM_ROWS; row++) {
@@ -112,14 +118,14 @@ public class ItemPouchGuiContainer extends GuiContainer {
             if (selectedCategory != null) {
                 Optional<Integer> slotIndex = pouch.getSlotIndexForCategory(newOffset, selectedCategory);
                 if (newOffset >= 0 && slotIndex.orElse(Integer.MAX_VALUE)
-                        <= pouch.getSlotsOfCategoryTrimEnd(selectedCategory) - NUM_ROWS + 2)
+                        <= pouch.getMatchingSlots(selectedCategory) - NUM_ROWS + 1)
                     pouchSlotOffset = newOffset;
                 else if (pouch.getSlotIndexForCategory(pouchSlotOffset, selectedCategory).orElse(Integer.MIN_VALUE)
-                        > pouch.getSlotsOfCategoryTrimEnd(selectedCategory) - NUM_ROWS + 2) {
+                        > pouch.getMatchingSlots(selectedCategory) - NUM_ROWS + 1) {
                     pouchSlotOffset = 0;
                 }
             } else {
-                if (newOffset >= 0 && newOffset < Category.values().length - NUM_ROWS + 2)
+                if (newOffset >= 0 && newOffset <= Category.values().length - NUM_ROWS + 1)
                     pouchSlotOffset = newOffset;
             }
         }
